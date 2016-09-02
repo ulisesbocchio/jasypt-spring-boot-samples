@@ -32,6 +32,7 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 @PropertySource(name = "EncryptedProperties", value = "classpath:encrypted.properties")
 @EncryptablePropertySource(name = "EncryptedProperties2", value = "classpath:encrypted2.properties")
+@EncryptablePropertySource(name = "EncryptedProperties3", value = "classpath:encrypted3.yml")
 @Import(TestConfig.class)
 //Uncomment this if not using jasypt-spring-boot-starter (use jasypt-spring-boot) dependency in pom instead
 @EnableEncryptableProperties
@@ -77,6 +78,7 @@ public class DemoApplication implements CommandLineRunner {
         LOG.info("ItemConfig: {}", itemConfig);
         Environment env = appCtx.getEnvironment();
         LOG.info("Secret from @EncryptablePropertySource annotation: {}", env.getProperty("secret2.property"));
+        LOG.info("Secret from @EncryptablePropertySource annotation and YAML File: {}", env.getProperty("secret3.property"));
         SimpleBean simpleBean = appCtx.getBean(SimpleBean.class);
         LOG.info("XML Context SimpleBean value: {}", simpleBean.getValue());
         LOG.info("Done!");
