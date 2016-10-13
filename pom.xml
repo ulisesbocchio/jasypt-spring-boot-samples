@@ -5,7 +5,7 @@
     <groupId>com.github.ulisesbocchio</groupId>
     <artifactId>jasypt-spring-boot-samples-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.9-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <name>Jasypt Spring Boot Parent</name>
     <description>Jasypt Spring Boot Parent</description>
     <url>https://github.com/ulisesbocchio/jasypt-spring-boot</url>
@@ -19,7 +19,7 @@
         <jasypt.version>1.9.2</jasypt.version>
         <maven.compiler.version>3.3</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>1.8-SNAPSHOT</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>1.9-SNAPSHOT</jasypt.spring.boot.version>
     </properties>
 
     <modules>
