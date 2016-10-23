@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.github.ulisesbocchio</groupId>
         <artifactId>jasypt-spring-boot-samples-parent</artifactId>
-        <version>1.8-SNAPSHOT</version>
+        <version>0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>jasypt-spring-boot-demo-tomcat-ssl</artifactId>
@@ -35,15 +35,14 @@
 			<artifactId>httpclient</artifactId>
             <version>4.5</version>
 		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-            <version>1.5</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -51,16 +50,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

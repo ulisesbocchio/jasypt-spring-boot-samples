@@ -7,7 +7,6 @@
 
     <bean id="simpleBean" class="demo.SimpleBean">
         <!--<property name="value" value="#{environment['secret.property']}" />-->
-        <property name="value" value="${secret.property}" />
     </bean>
 
 
