@@ -27,6 +27,9 @@
         <module>jasypt-spring-boot-demo-simple</module>
         <module>jasypt-spring-boot-demo-simple-starter</module>
         <module>jasypt-spring-boot-demo-custom-encryptor</module>
+        <module>jasypt-spring-boot-demo-custom-detector</module>
+        <module>jasypt-spring-boot-demo-custom-resolver</module>
+        <module>jasypt-spring-boot-demo-custom-prefix-suffix</module>
     </modules>
 
     <issueManagement>
