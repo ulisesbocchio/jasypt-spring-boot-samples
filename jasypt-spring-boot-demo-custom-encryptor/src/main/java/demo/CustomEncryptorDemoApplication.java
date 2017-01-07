@@ -42,7 +42,7 @@ public class CustomEncryptorDemoApplication implements CommandLineRunner {
     }
 
     @Bean(name="encryptorBean")
-    static public StringEncryptor stringEncryptor() {
+    public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
         config.setPassword("password");
