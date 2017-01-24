@@ -4,6 +4,7 @@ package demo;
 import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
 import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySources;
 
+import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
 
 /**
  * Sample Boot application that showcases easy integration of Jasypt encryption by
@@ -39,7 +41,10 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //System.setProperty("jasypt.encryptor.password", "password");
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
-        new SpringApplicationBuilder().sources(SimpleDemoApplication.class).run(args);
+        new SpringApplicationBuilder()
+                .environment(new EncryptableEnvironment(new StandardEnvironment()))
+                .sources(SimpleDemoApplication.class)
+                .run(args);
     }
 
     @Override
@@ -50,6 +55,9 @@ public class SimpleDemoApplication implements CommandLineRunner {
         LOG.info("MyService's secret2: {}", service.getSecret2());
         LOG.info("Environment's secret: {}", environment.getProperty("secret.property"));
         LOG.info("Environment's secret2: {}", environment.getProperty("secret2.property"));
+        //The EncryptableEnvironment should be able to resolve placeholders with encrypted values, if you don't need
+        // to resolve properties like ${NAME:ENC(encrypted_value)} then you don't need to specify EncryptableEnvironment.
+        LOG.info("Environment's Indirect secret property: {}", environment.getProperty("indirect.secret.property"));
         LOG.info("Done!");
     }
 }
