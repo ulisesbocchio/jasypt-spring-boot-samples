@@ -58,6 +58,7 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //The EncryptableEnvironment should be able to resolve placeholders with encrypted values, if you don't need
         // to resolve properties like ${NAME:ENC(encrypted_value)} then you don't need to specify EncryptableEnvironment.
         LOG.info("Environment's Indirect secret property: {}", environment.getProperty("indirect.secret.property"));
+        LOG.info("Environment's Indirect secret property 2: {}", environment.getProperty("endpoint"));
         LOG.info("Done!");
     }
 }
