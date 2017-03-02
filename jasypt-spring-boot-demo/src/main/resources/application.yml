@@ -12,3 +12,6 @@ jasypt:
     encryptor:
         bean: encryptorBean
         password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+logging.level:
+  org.springframework.context.annotation.ConfigurationClassPostProcessor: off
