@@ -1,9 +1,9 @@
 package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 /**
  * @author Ulises Bocchio
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ResolverConfig {
     @Bean(name="encryptablePropertyResolver")
-    EncryptablePropertyResolver encryptablePropertyResolver(@Value("${jasypt.encryptor.password}") String password) {
-        return new MyEncryptablePropertyResolver(password.toCharArray());
+    EncryptablePropertyResolver encryptablePropertyResolver(Environment environment) {
+        return new MyEncryptablePropertyResolver(environment);
     }
 }
