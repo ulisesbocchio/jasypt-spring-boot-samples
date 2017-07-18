@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-custom-prefix-suffix</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Simple Demo with Custom prefix/suffix for encrypted properties</name>
     <description>Jasypt Spring Boot Simple Demo with Custom prefix/suffix for encrypted properties</description>
 
 	<properties>

@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = CustomEncryptorDemoApplication.class)
-public class CustomEncryptorDemoApplicationTests {
+public class CustomEncryptorDemoApplicationTest {
 
 	@Autowired
 	ConfigurableEnvironment environment;

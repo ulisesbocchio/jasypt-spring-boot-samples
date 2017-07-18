@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-custom-encryptor</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Simple Demo with Starter Jar and Custom Encryptor</name>
     <description>Jasypt Spring Boot Simple Demo with Starter Ja and Custom Encryptor</description>
 
 	<properties>

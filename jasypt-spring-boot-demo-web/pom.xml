@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-web</artifactId>
     <packaging>jar</packaging>
-	<name>Jasypt Spring Boot Demo Web</name>
 	<description>Jasypt Spring Boot Demo on Web Application</description>
 
     <properties>

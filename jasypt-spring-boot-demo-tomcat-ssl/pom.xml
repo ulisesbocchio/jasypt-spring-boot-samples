@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-tomcat-ssl</artifactId>
     <packaging>war</packaging>
-	<name>Jasypt Spring Boot Demo Tomcat SSL</name>
 	<description>Jasypt Spring Boot Demo with Tomcat SSL Connector</description>
 
     <properties>

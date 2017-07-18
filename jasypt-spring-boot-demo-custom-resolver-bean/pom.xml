@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-custom-resolver-bean</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Demo with Custon Property Resolver Bean</name>
     <description>Jasypt Spring Boot Demo with Custon Property Resolver Bean</description>
 
 	<properties>

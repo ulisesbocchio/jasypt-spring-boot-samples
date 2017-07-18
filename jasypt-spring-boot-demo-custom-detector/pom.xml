@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-custom-detector</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Demo with Custon Property Detector</name>
     <description>Jasypt Spring Boot Demo with Custon Property Detector</description>
 
 	<properties>

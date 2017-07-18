@@ -6,7 +6,6 @@
     <artifactId>jasypt-spring-boot-samples-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
-    <name>Jasypt Spring Boot Demo Parent</name>
     <description>Jasypt Spring Boot Parent</description>
     <url>https://github.com/ulisesbocchio/jasypt-spring-boot</url>
 

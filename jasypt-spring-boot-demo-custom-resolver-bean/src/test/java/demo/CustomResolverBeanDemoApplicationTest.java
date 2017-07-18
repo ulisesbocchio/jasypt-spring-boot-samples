@@ -9,8 +9,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CustomDetectorDemoApplication.class)
-public class CustomDetectorDemoApplicationTests {
+@SpringBootTest(classes = CustomResolverBeanDemoApplication.class)
+public class CustomResolverBeanDemoApplicationTest {
 
 	@Autowired
 	ConfigurableEnvironment environment;

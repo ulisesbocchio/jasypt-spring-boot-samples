@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-simple-starter</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Simple Demo with Starter Jar</name>
     <description>Jasypt Spring Boot Simple Demo with Starter Jar</description>
 
 	<properties>

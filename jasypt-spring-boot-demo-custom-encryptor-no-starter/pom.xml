@@ -10,7 +10,6 @@
 
     <artifactId>jasypt-spring-boot-demo-custom-encryptor-no-starter</artifactId>
     <packaging>jar</packaging>
-    <name>Jasypt Spring Boot Simple Demo WITHOUT Starter Jar and Custom Encryptor</name>
     <description>Jasypt Spring Boot Simple Demo WITHOUT Starter Jar and Custom Encryptor</description>
 
 	<properties>

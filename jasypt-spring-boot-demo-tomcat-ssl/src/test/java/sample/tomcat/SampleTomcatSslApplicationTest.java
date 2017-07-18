@@ -38,7 +38,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SampleTomcatSslApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SampleTomcatSslApplicationTests {
+public class SampleTomcatSslApplicationTest {
 
     @LocalServerPort
     int port;

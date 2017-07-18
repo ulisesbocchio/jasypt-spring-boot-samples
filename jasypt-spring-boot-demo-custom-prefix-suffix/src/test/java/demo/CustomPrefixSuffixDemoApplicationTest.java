@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.StandardEnvironment;
 import org.springframework.test.context.BootstrapWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextLoader;
@@ -19,8 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CustomPrefixSuffixDemoApplication.class)
-@BootstrapWith(CustomPrefixSuffixDemoApplicationTests.EncryptableEnvironmentBootstrapper.class)
-public class CustomPrefixSuffixDemoApplicationTests {
+@BootstrapWith(CustomPrefixSuffixDemoApplicationTest.EncryptableEnvironmentBootstrapper.class)
+public class CustomPrefixSuffixDemoApplicationTest {
 
 	@Configuration
 	static class EncryptableEnvironmentBootstrapper extends SpringBootTestContextBootstrapper {

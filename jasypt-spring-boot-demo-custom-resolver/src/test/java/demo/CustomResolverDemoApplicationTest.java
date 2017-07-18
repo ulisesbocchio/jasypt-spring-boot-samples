@@ -2,31 +2,23 @@ package demo;
 
 import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootContextLoader;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.StandardEnvironment;
 import org.springframework.test.context.BootstrapWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextLoader;
-import org.springframework.test.context.MergedContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CustomResolverDemoApplication.class)
-@BootstrapWith(CustomResolverDemoApplicationTests.EncryptableEnvironmentBootstrapper.class)
-public class CustomResolverDemoApplicationTests {
+@BootstrapWith(CustomResolverDemoApplicationTest.EncryptableEnvironmentBootstrapper.class)
+public class CustomResolverDemoApplicationTest {
 
 	@Configuration
 	static class EncryptableEnvironmentBootstrapper extends SpringBootTestContextBootstrapper {
