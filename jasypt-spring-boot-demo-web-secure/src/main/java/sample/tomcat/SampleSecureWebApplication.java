@@ -16,24 +16,16 @@
 
 package sample.tomcat;
 
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
-@EnableEncryptableProperties
-public class SampleTomcatSslApplication extends SpringBootServletInitializer {
+@EnableWebSecurity
+public class SampleSecureWebApplication {
 
-	public static void main(String[] args) throws Exception {
-                //System.setProperty("jasypt.encryptor.password", "password");
-		SpringApplication.run(SampleTomcatSslApplication.class, args);
-	}
-
-  @Override
-  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-    return builder.sources(SampleTomcatSslApplication.class);
-  }
+    public static void main(String[] args) throws Exception {
+        //System.setProperty("jasypt.encryptor.password", "password");
+        SpringApplication.run(SampleSecureWebApplication.class, args);
+    }
 }

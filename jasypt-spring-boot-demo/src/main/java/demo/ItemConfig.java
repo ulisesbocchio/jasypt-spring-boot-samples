@@ -5,7 +5,7 @@ import org.springframework.core.style.ToStringCreator;
 
 import java.util.List;
 
-@ConfigurationProperties(prefix="itemConfig")
+@ConfigurationProperties(prefix="itemconfig")
 public class ItemConfig {
 
     private String configurationName;

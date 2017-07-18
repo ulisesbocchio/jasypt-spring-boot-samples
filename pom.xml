@@ -13,23 +13,26 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring.boot.version>1.5.4.RELEASE</spring.boot.version>
+        <spring.boot.version>2.0.0.M2</spring.boot.version>
         <jasypt.version>1.9.2</jasypt.version>
         <maven.compiler.version>3.6.1</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>1.14-SNAPSHOT</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>1.15-SNAPSHOT</jasypt.spring.boot.version>
     </properties>
 
     <modules>
         <module>jasypt-spring-boot-demo</module>
-        <module>jasypt-spring-boot-demo-web</module>
-        <module>jasypt-spring-boot-demo-tomcat-ssl</module>
+        <module>jasypt-spring-boot-demo-custom-detector</module>
+        <module>jasypt-spring-boot-demo-custom-encryptor</module>
+        <module>jasypt-spring-boot-demo-custom-encryptor-no-starter</module>
+        <module>jasypt-spring-boot-demo-custom-prefix-suffix</module>
+        <module>jasypt-spring-boot-demo-custom-resolver</module>
+        <module>jasypt-spring-boot-demo-custom-resolver-bean</module>
         <module>jasypt-spring-boot-demo-simple</module>
         <module>jasypt-spring-boot-demo-simple-starter</module>
-        <module>jasypt-spring-boot-demo-custom-encryptor</module>
-        <module>jasypt-spring-boot-demo-custom-detector</module>
-        <module>jasypt-spring-boot-demo-custom-resolver</module>
-        <module>jasypt-spring-boot-demo-custom-prefix-suffix</module>
+        <module>jasypt-spring-boot-demo-tomcat-ssl</module>
+        <module>jasypt-spring-boot-demo-web</module>
+        <module>jasypt-spring-boot-demo-web-secure</module>
     </modules>
 
     <issueManagement>
@@ -133,5 +136,24 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
