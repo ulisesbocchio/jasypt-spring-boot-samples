@@ -32,6 +32,7 @@
         <module>jasypt-spring-boot-demo-tomcat-ssl</module>
         <module>jasypt-spring-boot-demo-web</module>
         <module>jasypt-spring-boot-demo-web-secure</module>
+        <module>jasypt-spring-boot-demo-web-secure-custom-resolver</module>
     </modules>
 
     <issueManagement>
