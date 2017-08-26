@@ -42,7 +42,7 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                .environment(new EncryptableEnvironment(new StandardEnvironment()))
+                //.environment(new EncryptableEnvironment(new StandardEnvironment()))
                 .sources(SimpleDemoApplication.class)
                 .run(args);
     }
@@ -60,7 +60,6 @@ public class SimpleDemoApplication implements CommandLineRunner {
         LOG.info("Environment's Indirect secret property: {}", environment.getProperty("indirect.secret.property"));
         LOG.info("Environment's Indirect secret property 2: {}", environment.getProperty("endpoint"));
         LOG.info("Environment's Indirect secret property 3: {}", environment.getProperty("endpoint2"));
-        LOG.info("Environment's Indirect secret property 4: {}", environment.getProperty("endpoint3"));
         LOG.info("Done!");
     }
 }
