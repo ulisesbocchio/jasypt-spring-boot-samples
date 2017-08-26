@@ -2,3 +2,8 @@ jasypt:
     encryptor:
         bean: encryptorBean
         password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+user2: uli
+defaultPassword2: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+# doesn't work
+endpoint2: https://${user2}:${defaultPassword2}@localhost:30000

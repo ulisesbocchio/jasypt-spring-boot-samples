@@ -59,6 +59,8 @@ public class SimpleDemoApplication implements CommandLineRunner {
         // to resolve properties like ${NAME:ENC(encrypted_value)} then you don't need to specify EncryptableEnvironment.
         LOG.info("Environment's Indirect secret property: {}", environment.getProperty("indirect.secret.property"));
         LOG.info("Environment's Indirect secret property 2: {}", environment.getProperty("endpoint"));
+        LOG.info("Environment's Indirect secret property 3: {}", environment.getProperty("endpoint2"));
+        LOG.info("Environment's Indirect secret property 4: {}", environment.getProperty("endpoint3"));
         LOG.info("Done!");
     }
 }
