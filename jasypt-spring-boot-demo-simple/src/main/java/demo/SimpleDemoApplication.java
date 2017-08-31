@@ -1,10 +1,12 @@
 package demo;
 
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
 import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySources;
 
 import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ import org.springframework.core.env.StandardEnvironment;
 @EncryptablePropertySources({@EncryptablePropertySource("classpath:encrypted.properties"),
                              @EncryptablePropertySource(name = "IgnoredResource_FileDoesNotExist", value = "classpath:does_not_exists.properties", ignoreResourceNotFound = true)})
 @Import(TestConfig.class)
+@EnableEncryptableProperties
 public class SimpleDemoApplication implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(SimpleDemoApplication.class);
@@ -42,7 +45,7 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                //.environment(new EncryptableEnvironment(new StandardEnvironment()))
+                //.environment(new StandardEncryptableEnvironment())
                 .sources(SimpleDemoApplication.class)
                 .run(args);
     }
@@ -60,6 +63,7 @@ public class SimpleDemoApplication implements CommandLineRunner {
         LOG.info("Environment's Indirect secret property: {}", environment.getProperty("indirect.secret.property"));
         LOG.info("Environment's Indirect secret property 2: {}", environment.getProperty("endpoint"));
         LOG.info("Environment's Indirect secret property 3: {}", environment.getProperty("endpoint2"));
+        LOG.info("application yml defaultPassword2: {}", environment.getProperty("defaultPassword2"));
         LOG.info("Done!");
     }
 }

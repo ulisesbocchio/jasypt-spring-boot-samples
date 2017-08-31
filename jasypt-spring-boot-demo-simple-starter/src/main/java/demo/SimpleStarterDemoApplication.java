@@ -2,6 +2,7 @@ package demo;
 
 
 import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class SimpleStarterDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                .environment(new EncryptableEnvironment(new StandardEnvironment()))
+                .environment(new StandardEncryptableEnvironment())
                 .sources(SimpleStarterDemoApplication.class).run(args);
     }
 

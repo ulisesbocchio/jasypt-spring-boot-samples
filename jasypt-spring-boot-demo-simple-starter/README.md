@@ -22,7 +22,7 @@ The starter jar has a `spring.factories` definition that Spring Boot uses to boo
  
  ```java
          new SpringApplicationBuilder()
-                 .environment(new EncryptableEnvironment(new StandardEnvironment()))
+                 .environment(new StandardEncryptableEnvironment())
                  .sources(SimpleStarterDemoApplication.class).run(args);
  ```
  
