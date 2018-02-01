@@ -16,9 +16,16 @@
 
 package sample.tomcat;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import java.util.Collections;
 
 @SpringBootApplication
 @EnableWebSecurity
@@ -27,5 +34,21 @@ public class SampleSecureWebApplication {
     public static void main(String[] args) throws Exception {
         //System.setProperty("jasypt.encryptor.password", "password");
         SpringApplication.run(SampleSecureWebApplication.class, args);
+    }
+
+    @Bean
+    InMemoryUserDetailsManager userDetailsService(@Value("${security.user.name}") String name,
+                                                  @Value("${security.user.password}") String password) {
+        return new InMemoryUserDetailsManager(
+//                Collections.singletonList(User.withUsername(name)
+//                        .password(password)
+//                        .roles("USER")
+//                        .build())
+                User.withDefaultPasswordEncoder()
+                        .username(name)
+                        .password(password)
+                        .roles("USER")
+                        .build()
+        );
     }
 }

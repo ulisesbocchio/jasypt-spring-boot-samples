@@ -17,15 +17,18 @@
 package sample.tomcat;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.Collections;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 @SpringBootApplication
@@ -43,6 +46,22 @@ public class SampleSecureWebApplicationWithCustomResolver {
                 .filter(Predicate.isEqual("ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)"))
                 .map(v -> "chupacabras")
                 .orElse(value);
+    }
+
+    @Bean
+    InMemoryUserDetailsManager userDetailsService(@Value("${security.user.name}") String name,
+                                                  @Value("${security.user.password}") String password) {
+        return new InMemoryUserDetailsManager(
+//                Collections.singletonList(User.withUsername(name)
+//                        .password(password)
+//                        .roles("USER")
+//                        .build())
+                User.withDefaultPasswordEncoder()
+                        .username(name)
+                        .password(password)
+                        .roles("USER")
+                        .build()
+        );
     }
 
     public static void main(String[] args) throws Exception {
