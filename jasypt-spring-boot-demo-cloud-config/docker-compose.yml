@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  config-client:
+    image: jasypt-spring-boot-demo-cloud-config-client
+    build:
+      context: .
+    environment:
+      SPRING_PROFILES_ACTIVE: compose
+      JASYPT_ENCRYPTOR_PASSWORD: password
+    ports:
+     - "8080:8080"
+    links:
+      - config-server
+  config-server:
+    image: hyness/spring-cloud-config-server
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+    volumes:
+      - ./config:/config
+    ports:
+      - "8888:8888"

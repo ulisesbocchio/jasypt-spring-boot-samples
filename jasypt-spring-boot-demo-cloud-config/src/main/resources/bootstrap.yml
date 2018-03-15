@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      enabled: false
+---
+spring:
+  profiles: compose
+  cloud:
+    config:
+      enabled: true
+      uri: http://${secret-domain}:8888
+secret-domain: ENC(RVgLduUN8pmkzSDDjAnj9/Kr/n4HBVBl)
