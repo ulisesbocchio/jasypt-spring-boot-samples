@@ -3,7 +3,6 @@ package demo;
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
-import org.springframework.core.env.Environment;
 
 /**
  * @author Ulises Bocchio
@@ -13,11 +12,11 @@ class MyEncryptablePropertyResolver implements EncryptablePropertyResolver {
 
     private final PooledPBEStringEncryptor encryptor;
 
-    public MyEncryptablePropertyResolver(Environment environment) {
-        char[] password = "password".toCharArray();
+    public MyEncryptablePropertyResolver(String password) {
+//        char[] password = "password".toCharArray();
         this.encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        config.setPasswordCharArray(password);
+        config.setPasswordCharArray(password.toCharArray());
         config.setAlgorithm("PBEWithMD5AndDES");
         config.setKeyObtentionIterations("1000");
         config.setPoolSize(1);

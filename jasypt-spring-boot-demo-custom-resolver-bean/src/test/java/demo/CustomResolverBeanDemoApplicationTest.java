@@ -24,13 +24,13 @@ public class CustomResolverBeanDemoApplicationTest {
 
 	@Test
 	public void testEnvironmentProperties() {
-		Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
+		Assert.assertEquals("{cipher}nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+", environment.getProperty("secret.property"));
 		Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
 	}
 
 	@Test
 	public void testServiceProperties() {
-		Assert.assertEquals("chupacabras", service.getSecret());
+		Assert.assertEquals("{cipher}nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+", service.getSecret());
 		Assert.assertEquals("chupacabras", service.getSecret2());
 	}
 

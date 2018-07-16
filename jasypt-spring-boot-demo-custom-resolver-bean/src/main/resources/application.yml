@@ -1,7 +1,13 @@
 jasypt:
     encryptor:
         bean: encryptorBean
-        password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+        password: ${JASYPT_ENCRYPTOR_PASSWORD:password}
+        property:
+          filter:
+            exclude-names:
+              - ^jasypt\.encryptor\..*
+            include-names:
+              - ^secret2.*
 
 secret2:
     property: '{cipher}nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+'
