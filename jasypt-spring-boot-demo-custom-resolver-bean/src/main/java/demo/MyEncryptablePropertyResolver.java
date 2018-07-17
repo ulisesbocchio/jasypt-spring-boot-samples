@@ -28,8 +28,8 @@ class MyEncryptablePropertyResolver implements EncryptablePropertyResolver {
 
     @Override
     public String resolvePropertyValue(String value) {
-        if (value != null && value.startsWith("{cipher}")) {
-            return encryptor.decrypt(value.substring("{cipher}".length()));
+        if (value != null && value.startsWith("{cipherr}")) {
+            return encryptor.decrypt(value.substring("{cipherr}".length()));
         }
         return value;
     }

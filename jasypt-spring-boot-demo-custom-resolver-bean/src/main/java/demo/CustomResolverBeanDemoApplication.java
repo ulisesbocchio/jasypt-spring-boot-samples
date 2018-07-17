@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.context.scope.refresh.RefreshScopeRefreshedEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
@@ -39,7 +40,6 @@ public class CustomResolverBeanDemoApplication implements CommandLineRunner {
                 .sources(CustomResolverBeanDemoApplication.class).run(args);
     }
 
-
     @Override
     public void run(String... args) throws Exception {
         MyService service = appCtx.getBean(MyService.class);
@@ -48,6 +48,15 @@ public class CustomResolverBeanDemoApplication implements CommandLineRunner {
         LOG.info("Environment's secret2: {}", environment.getProperty("secret2.property"));
         LOG.info("MyService's secret: {}", service.getSecret());
         LOG.info("MyService's secret2: {}", service.getSecret2());
+
+        appCtx.publishEvent(new RefreshScopeRefreshedEvent());
+        LOG.info("Scope Refreshed!");
+
+        LOG.info("Environment's secret: {}", environment.getProperty("secret.property"));
+        LOG.info("Environment's secret2: {}", environment.getProperty("secret2.property"));
+        LOG.info("MyService's secret: {}", service.getSecret());
+        LOG.info("MyService's secret2: {}", service.getSecret2());
+
         LOG.info("Done!");
     }
 }
