@@ -17,7 +17,7 @@
         <jasypt.version>1.9.2</jasypt.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>2.1.0-SNAPSHOT</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>2.1.0</jasypt.spring.boot.version>
     </properties>
 
     <modules>
