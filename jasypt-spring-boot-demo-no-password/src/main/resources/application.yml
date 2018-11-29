@@ -1,0 +1,7 @@
+jasypt:
+  encryptor:
+    bean: encryptorBean
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+username: uli
+#password: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)

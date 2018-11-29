@@ -36,6 +36,7 @@
         <module>jasypt-spring-boot-demo-web-secure</module>
         <module>jasypt-spring-boot-demo-web-secure-custom-resolver</module>
         <module>jasypt-spring-boot-demo-db-h2</module>
+        <module>jasypt-spring-boot-demo-no-password</module>
     </modules>
 
     <issueManagement>
