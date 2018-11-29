@@ -1,0 +1,21 @@
+jasypt:
+  encryptor:
+    bean: encryptorBean
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+user2: uli
+defaultPassword2: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+# works with @EnableEncryptableProperties and StandardEncryptableEnvironment
+endpoint2: https://${user2}:${defaultPassword2}@localhost:30000
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+#    url: jdbc:h2:file:~/Downloads/test.db:testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    url: jdbc:h2:${dbfile}:testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    driver-class-name: org.h2.Driver
+    username: ULI
+    password: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
