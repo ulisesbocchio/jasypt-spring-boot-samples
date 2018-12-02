@@ -15,7 +15,7 @@ spring:
       ddl-auto: update
   datasource:
 #    url: jdbc:h2:file:~/Downloads/test.db:testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
-    url: jdbc:h2:${dbfile}:testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    url: jdbc:h2:${resources-path}/testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
     driver-class-name: org.h2.Driver
     username: ULI
     password: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)

@@ -60,14 +60,14 @@ public class DBH2DemoApplication implements CommandLineRunner {
     }
 
     @Bean
-    public static BeanDefinitionRegistryPostProcessor dbFilenamePropertySourcePostProcessor(ConfigurableEnvironment env) {
+    public static BeanDefinitionRegistryPostProcessor resourcesPathPropertySourcePostProcessor(ConfigurableEnvironment env) {
         return new BeanDefinitionRegistryPostProcessor() {
             @SneakyThrows
             @Override
             public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
                 Map<String, Object> map = new HashMap<>();
-                map.put("dbfile", new ClassPathResource("./").getURL() + "/testdb");
-                PropertySource ps = new MapPropertySource("dbfilename", map);
+                map.put("resources-path", new ClassPathResource("./").getURL());
+                PropertySource ps = new MapPropertySource("resources-path", map);
                 env.getPropertySources().addLast(ps);
             }
 
