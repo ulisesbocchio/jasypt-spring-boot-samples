@@ -3,8 +3,8 @@ jasypt:
         bean: encryptorBean
         password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 
-user: uli
+userprop: uli
 defaultPassword: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
 # works with @EnableEncryptableProperties and StandardEncryptableEnvironment
-endpoint: https://${user}:${defaultPassword}@localhost:30000
+endpoint: https://${userprop}:${defaultPassword}@localhost:30000
 

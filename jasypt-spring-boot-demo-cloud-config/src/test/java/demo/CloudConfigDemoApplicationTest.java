@@ -26,7 +26,7 @@ public class CloudConfigDemoApplicationTest {
 
     @Test
     public void testIndirectProperties() {
-        Assert.assertEquals("https://ubocchio:chupacabras@localhost:30000", environment.getProperty("endpoint"));
+        Assert.assertEquals("https://uli:chupacabras@localhost:30000", environment.getProperty("endpoint"));
     }
 
     @Test
