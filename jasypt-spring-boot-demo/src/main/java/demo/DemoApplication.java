@@ -65,6 +65,7 @@ public class DemoApplication implements CommandLineRunner {
         config.setPoolSize("1");
         config.setProviderName("SunJCE");
         config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");
+        config.setIvGeneratorClassName("org.jasypt.salt.NoOpIVGenerator");
         config.setStringOutputType("base64");
         encryptor.setConfig(config);
         return encryptor;

@@ -3,5 +3,5 @@ jasypt:
     bean: encryptorBean
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 
-username: uli
+test.user: uli
 #password: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)

@@ -25,6 +25,6 @@ public class NoPasswordDemoApplicationTest {
 
     @Test
     public void testUsername() {
-        Assert.assertEquals("uli", environment.getProperty("username"));
+        Assert.assertEquals("uli", environment.getProperty("test.user"));
     }
 }

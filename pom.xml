@@ -14,10 +14,9 @@
         <java.version>1.8</java.version>
         <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
-        <jasypt.version>1.9.2</jasypt.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>2.1.0</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>2.1.1-SNAPSHOT</jasypt.spring.boot.version>
     </properties>
 
     <modules>
@@ -129,11 +128,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jasypt</groupId>
-                <artifactId>jasypt</artifactId>
-                <version>${jasypt.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ulisesbocchio</groupId>
