@@ -16,7 +16,7 @@
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>2.1.1-SNAPSHOT</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>2.1.2-SNAPSHOT</jasypt.spring.boot.version>
     </properties>
 
     <modules>
