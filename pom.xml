@@ -39,7 +39,7 @@
         <module>jasypt-spring-boot-demo-simple-asymmetric</module>
         <module>jasypt-spring-boot-demo-simple-asymmetric-der</module>
         <module>jasypt-spring-boot-demo-simple-ivgenerator</module>
-        <module>jasypt-spring-boot-demo-melloware-ivgenerator</module>
+        <module>jasypt-spring-boot-demo-ivgenerator</module>
     </modules>
 
     <issueManagement>
