@@ -1,6 +1,2 @@
-jasypt:
-    encryptor:
-        bean: encryptorBean
-
 secret2:
     property: ENC(eQLc2XCghRT9uTaTs2lugViMWf0aBsex+ZzlUoRj6xGWoLBmo4zey17FDRG0Os8C5jQvCgy2SV6Q4mFrf+WQPFSMev8j8GxgrpapuWjEPdapxjQB0KyO8Dm0iIK/cFbHEeqF0jESeX6hzkyE//AcjmWL7y4BQ3jJoDNen6WMcX/1lymFeZWs3Xs9loNVYu9fN89vEYaZJUSz17YU7pWIhloD4bPj6jiozKdgUbkJaWoQxKNvTnd+C7kfrH+jIf1ntZF5+o8uQij+XpO/vhXEmcjhs6SHHehjPR2sgd/GT647iqvoCN2brpMXG0K3TE0cnVfHYn0EX5hNovK5lju6+A==)
