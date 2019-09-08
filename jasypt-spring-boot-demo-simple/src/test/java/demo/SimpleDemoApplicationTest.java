@@ -14,36 +14,45 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = SimpleDemoApplication.class)
 public class SimpleDemoApplicationTest {
 
-	@Autowired
-	ConfigurableEnvironment environment;
+    @Autowired
+    ConfigurableEnvironment environment;
 
-	@Autowired
-	MyService service;
+    @Autowired
+    MyService service;
 
-	@Autowired
-	EncryptablePropertyResolver resolver;
+    @Autowired
+    EncryptablePropertyResolver resolver;
 
-	static {
-		System.setProperty("jasypt.encryptor.password", "password");
-	}
+    static {
+        System.setProperty("jasypt.encryptor.password", "password");
+		System.setProperty("ENCRYPTED_PASSWORD", "nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+");
+    }
 
-	@Test
-	public void testEnvironmentProperties() {
-		Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
-		Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
-	}
-
-@Test
-	public void testIndirectProperties() {
-	EncryptableEnvironment encryptableEnvironment = new EncryptableEnvironment(environment, resolver);
-	Assert.assertEquals("chupacabras", encryptableEnvironment.getProperty("indirect.secret.property"));
-	Assert.assertEquals("https://uli:chupacabras@localhost:30000", encryptableEnvironment.getProperty("endpoint"));
-	}
+    @Test
+    public void testEnvironmentProperties() {
+        Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
+        Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
+    }
 
 	@Test
-	public void testServiceProperties() {
-		Assert.assertEquals("chupacabras", service.getSecret());
-		Assert.assertEquals("chupacabras", service.getSecret2());
+	public void testIndirectPropertiesDirectly() {
+		Assert.assertEquals("chupacabras", environment.getProperty("indirect.secret.property"));
+		Assert.assertEquals("chupacabras", environment.getProperty("indirect.secret.property2"));
+		Assert.assertEquals("https://uli:chupacabras@localhost:30000", environment.getProperty("endpoint"));
 	}
+
+    @Test
+    public void testIndirectProperties() {
+        EncryptableEnvironment encryptableEnvironment = new EncryptableEnvironment(environment, resolver);
+        Assert.assertEquals("chupacabras", encryptableEnvironment.getProperty("indirect.secret.property"));
+        Assert.assertEquals("chupacabras", encryptableEnvironment.getProperty("indirect.secret.property2"));
+        Assert.assertEquals("https://uli:chupacabras@localhost:30000", encryptableEnvironment.getProperty("endpoint"));
+    }
+
+    @Test
+    public void testServiceProperties() {
+        Assert.assertEquals("chupacabras", service.getSecret());
+        Assert.assertEquals("chupacabras", service.getSecret2());
+    }
 
 }
