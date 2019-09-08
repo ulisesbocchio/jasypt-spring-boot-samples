@@ -2,6 +2,7 @@ package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
+import org.jasypt.encryption.StringEncryptor;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,9 +24,17 @@ public class SimpleDemoApplicationTest {
     @Autowired
     EncryptablePropertyResolver resolver;
 
+    @Autowired
+    StringEncryptor encryptor;
+
     static {
         System.setProperty("jasypt.encryptor.password", "password");
 		System.setProperty("ENCRYPTED_PASSWORD", "nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+");
+    }
+
+    @Test
+    public void testStringEncryptorIsPresent() {
+        Assert.assertNotNull("StringEncryptor should be present", encryptor);
     }
 
     @Test
