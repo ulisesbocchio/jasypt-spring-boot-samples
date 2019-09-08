@@ -10,8 +10,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SimplePBEWITHHMACSHA512ANDAES_256MellowareDemoApplication.class)
-public class SimplePBEWITHHMACSHA512ANDAES256MellowareDemoApplicationTest {
+@SpringBootTest(classes = SimplePBEWITHHMACSHA512ANDAES_256DemoApplication.class)
+public class SimplePBEWITHHMACSHA512ANDAES256DemoApplicationTest {
 
 	@Autowired
 	Environment environment;
@@ -42,7 +42,7 @@ public class SimplePBEWITHHMACSHA512ANDAES256MellowareDemoApplicationTest {
 	public void encryptProperty() {
 		String message = "chupacabras";
 		String encrypted = encryptorBean.encrypt(message);
-		System.out.printf("Encrypted melloware message %s\n", encrypted);
+		System.out.printf("Encrypted message %s\n", encrypted);
 		String decrypted = encryptorBean.decrypt(encrypted);
 		Assert.assertEquals(message, decrypted);
 		System.out.println();

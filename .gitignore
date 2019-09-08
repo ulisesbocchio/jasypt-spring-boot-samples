@@ -14,3 +14,9 @@ hs_err_pid*
 **/target/
 *.iml
 .DS_Store
+#eclipse
+.settings/
+.classpath
+.project
+.factorypath
+.vscode

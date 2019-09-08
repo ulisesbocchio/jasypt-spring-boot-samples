@@ -22,9 +22,9 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 @Import(TestConfig.class)
 //Uncomment this if not using jasypt-spring-boot-starter (use jasypt-spring-boot) dependency in pom instead
-public class SimplePBEWITHHMACSHA512ANDAES_256MellowareDemoApplication implements CommandLineRunner {
+public class SimplePBEWITHHMACSHA512ANDAES_256DemoApplication implements CommandLineRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SimplePBEWITHHMACSHA512ANDAES_256MellowareDemoApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SimplePBEWITHHMACSHA512ANDAES_256DemoApplication.class);
 
 // Set the following system property or turn it into an environment variable for this app to run
 //    static {
@@ -36,14 +36,14 @@ public class SimplePBEWITHHMACSHA512ANDAES_256MellowareDemoApplication implement
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .sources(SimplePBEWITHHMACSHA512ANDAES_256MellowareDemoApplication.class).run(args);
+                .sources(SimplePBEWITHHMACSHA512ANDAES_256DemoApplication.class).run(args);
     }
 
     @Override
     public void run(String... args) throws Exception {
         MyService service = appCtx.getBean(MyService.class);
         Environment environment = appCtx.getBean(Environment.class);
-        LOG.info("PBEWITHHMACSHA512ANDAES_256 melloware encryption");
+        LOG.info("PBEWITHHMACSHA512ANDAES_256 encryption");
         LOG.info("Environment's secret: {}", environment.getProperty("secret.property"));
         LOG.info("Environment's secret2: {}", environment.getProperty("secret2.property"));
         LOG.info("MyService's secret: {}", service.getSecret());

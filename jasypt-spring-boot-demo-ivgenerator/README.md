@@ -2,7 +2,7 @@
 
  ## Asymmetric Encryption
  
- This app showcases the usage of asymmetric encryption/decryption using PBEWITHHMACSHA512ANDAES_256 from melloware's jasypt
+ This app showcases the usage of asymmetric encryption/decryption using PBEWITHHMACSHA512ANDAES_256 from jasypt
  
 ## Encryptable Property Sources enabled by:
 
