@@ -1,9 +1,7 @@
 package demo;
 
 
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
-import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
-import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySources;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 
 /**
@@ -25,14 +21,13 @@ import org.springframework.core.env.Environment;
  * @author Ulises Bocchio
  */
 @SpringBootApplication
-@ComponentScan(excludeFilters = @ComponentScan.Filter( type = FilterType.ASSIGNABLE_TYPE, value = CustomEnvironmentSimpleDemoApplication.class))
-@EncryptablePropertySources({@EncryptablePropertySource("classpath:encrypted.properties"),
-                             @EncryptablePropertySource(name = "IgnoredResource_FileDoesNotExist", value = "classpath:does_not_exists.properties", ignoreResourceNotFound = true)})
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = SimpleDemoApplication.class))
+@PropertySources({@PropertySource("classpath:encrypted.properties"),
+        @PropertySource(name = "IgnoredResource_FileDoesNotExist", value = "classpath:does_not_exists.properties", ignoreResourceNotFound = true)})
 @Import(TestConfig.class)
-@EnableEncryptableProperties
-public class SimpleDemoApplication implements CommandLineRunner {
+public class CustomEnvironmentSimpleDemoApplication implements CommandLineRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SimpleDemoApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomEnvironmentSimpleDemoApplication.class);
 
     @Autowired
     ApplicationContext appCtx;
@@ -45,8 +40,8 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                //.environment(new StandardEncryptableEnvironment())
-                .sources(SimpleDemoApplication.class)
+                .environment(new StandardEncryptableEnvironment())
+                .sources(CustomEnvironmentSimpleDemoApplication.class)
                 .run(args);
     }
 

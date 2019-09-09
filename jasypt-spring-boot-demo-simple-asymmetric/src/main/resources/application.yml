@@ -1,6 +1,5 @@
 jasypt:
     encryptor:
-        bean: encryptorBean
         privateKeyFormat: PEM
 
 secret2:
