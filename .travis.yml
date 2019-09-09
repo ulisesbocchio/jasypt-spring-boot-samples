@@ -40,6 +40,7 @@ install:
         export PATH="$JAVA_HOME/bin:$PATH";
       fi
     fi
+  - mvn -version
 
 
 script: mvn package -Dgpg.skip=true
