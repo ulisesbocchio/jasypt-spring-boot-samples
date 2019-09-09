@@ -1,6 +1,5 @@
 jasypt:
   encryptor:
-    bean: encryptorBean
     algorithm: PBEWITHHMACSHA512ANDAES_256
     ivGeneratorClassname: org.jasypt.iv.RandomIvGenerator
 
