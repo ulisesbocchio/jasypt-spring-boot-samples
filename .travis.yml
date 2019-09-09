@@ -1,16 +1,26 @@
 language: java
-jdk:
-  - oraclejdk8
-  - openjdk11
-
+# use latest dist by default, but certain setups need to fall back to xenial or even trusty (see also matrix):
+# - oraclejdk8 needs trusty, see https://travis-ci.community/t/install-of-oracle-jdk-8-failing/3038/9
+#   note: as of 08.09.2019, this JDK provided by Travis is rather old (just minor version 151 instead of 222)
+#         and installing a newer one manually seems to require too much effort.
+# - openjdk8 fails on bionic (similar to oraclejdk8 on >trusty), but on xenial the minor version is way more recent
+dist: bionic
 matrix:
   include:
-    - os: linux
-      dist: trusty
-      jdk: oraclejdk8
-    - os: linux
-      dist: xenial
-      jdk: openjdk11
+  - name: "OpenJDK 11"
+    jdk: openjdk11
+    env: OPENJDK_VERSION=11
+  - name: "OpenJDK 8"
+    jdk: openjdk8
+    env: OPENJDK_VERSION=8
+    dist: xenial
+  - name: "OracleJDK 8"
+    jdk: oraclejdk8
+    dist: trusty
+  - name: "OpenJDK 12"
+    jdk: openjdk12
+    env: OPENJDK_VERSION=12
+
 
 notifications:
   webhooks:
@@ -21,4 +31,15 @@ notifications:
     on_start: false     # default: false
 after_success:
   - coveralls
-install: mvn package -Dgpg.skip=true
+install: 
+  - if [ -n "${OPENJDK_VERSION}" ]; then
+      JAVA_HOME_CANDIATE=/usr/lib/jvm/java-${OPENJDK_VERSION}-openjdk-amd64;
+      if [ "${JAVA_HOME}" != "${JAVA_HOME_CANDIATE}" ] && [ -d "${JAVA_HOME_CANDIATE}" ]; then
+        echo "Switching to a (possibly) more recent JDK ${OPENJDK_VERSION} minor version ...";
+        export JAVA_HOME=${JAVA_HOME_CANDIATE};
+        export PATH="$JAVA_HOME/bin:$PATH";
+      fi
+    fi
+
+
+script: mvn package -Dgpg.skip=true
