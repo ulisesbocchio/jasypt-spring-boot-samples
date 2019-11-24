@@ -3,7 +3,7 @@ jasypt:
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 
 user2: uli
-defaultPassword2: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+defaultPassword2: ENC(jHrd0zN3anZD/QTc4Fmd0DCxA6itL64tIXbGorROetPOtfJ1UoTa0+eeUYR+g99d))
 # works with @EnableEncryptableProperties and StandardEncryptableEnvironment
 endpoint2: https://${user2}:${defaultPassword2}@localhost:30000
 spring:
@@ -17,4 +17,4 @@ spring:
     url: jdbc:h2:${resources-path}/testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
     driver-class-name: org.h2.Driver
     username: ULI
-    password: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+    password: ENC(532amohGKp+ylPJFcambS9A4iU1lKVZVRJHqlblnjqaIVVKVJxwHudMMaj/auAZO)
