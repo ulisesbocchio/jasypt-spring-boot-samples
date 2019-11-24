@@ -3,4 +3,4 @@ jasypt:
         password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 
 secret2:
-    property: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+    property: ENC(ksrrNGZG+wzxMosoz0f5UW0rvIgH81svkIGY2QuhmaobPvDWmcaugXprgQny6YhT)
