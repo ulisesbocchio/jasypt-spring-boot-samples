@@ -3,7 +3,6 @@ package demo;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
-
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
@@ -55,7 +54,7 @@ public class DemoApplication implements CommandLineRunner {
     }
 
     //Uncomment this code block for custom StringEncryptor configuration
-    @Bean(name="encryptorBean")
+    @Bean(name = "encryptorBean")
     static public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();

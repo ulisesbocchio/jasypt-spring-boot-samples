@@ -97,8 +97,10 @@ public class DBH2DemoApplication implements CommandLineRunner {
     @Override
     @SneakyThrows
     public void run(String... args) {
-        //populateDb();
-        //createUserWithPassword();
+        // uncomment the following, remove src/main/java/resources/testdb.mv.db and src/testjava/resources/testdb.mv.db, and run application to re-create db
+        // populateDb();
+        // createUserWithPassword();
+        // then copy target/classes/testdb.mv.db to src/main/java/resources/testdb.mv.db and src/test/java/resources/testdb.mv.db and do a mvn clea
         LOG.info("**********************************************************");
         LOG.info("**********************************************************");
         LOG.info("DB File: {}", appCtx.getEnvironment().getProperty("dbfile"));
