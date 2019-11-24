@@ -32,6 +32,6 @@ public class CloudConfigDemoApplicationTest {
     @Test
     public void decryptEncript() {
         System.out.println(encryptor.encrypt("config-server"));
-        Assert.assertEquals(encryptor.decrypt("nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+"), "chupacabras");
+        Assert.assertEquals(encryptor.decrypt("5HHB8n649TNGdJxLjV1PFO8xPmrhWeDFWizBn1y0kPQesBA5jb+Oz1yEP9YLBBtA"), "chupacabras");
     }
 }

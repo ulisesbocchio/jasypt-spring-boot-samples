@@ -11,4 +11,4 @@ spring:
     config:
       enabled: true
       uri: http://${secret-domain}:8888
-secret-domain: ENC(RVgLduUN8pmkzSDDjAnj9/Kr/n4HBVBl)
+secret-domain: ENC(Xgga6wfHFbxIMXg9PPGQxBUnp2Aabp3rx2t4uzLP7RKQOdMcdQGpatfukpuj8a6B)
