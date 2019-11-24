@@ -41,7 +41,7 @@ public class SimpleDemoApplication implements CommandLineRunner {
         //try commenting the following line out and run the app from the command line passing the password as
         //a command line argument: java -jar target/jasypt-spring-boot-demo-0.0.1-SNAPSHOT.jar --jasypt.encryptor.password=password
         //System.setProperty("jasypt.encryptor.password", "password");
-        System.setProperty("ENCRYPTED_PASSWORD", "nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+");
+        System.setProperty("ENCRYPTED_PASSWORD", "9ah+QnEdccHCkARkGZ7f0v5BLXXC+z0mr4hyjgE8T2G7mF75OBU1DgmC0YsGis8x");
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()

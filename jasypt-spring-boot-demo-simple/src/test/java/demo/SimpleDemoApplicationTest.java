@@ -29,7 +29,7 @@ public class SimpleDemoApplicationTest {
 
     static {
         System.setProperty("jasypt.encryptor.password", "password");
-		System.setProperty("ENCRYPTED_PASSWORD", "nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+");
+		System.setProperty("ENCRYPTED_PASSWORD", "9ah+QnEdccHCkARkGZ7f0v5BLXXC+z0mr4hyjgE8T2G7mF75OBU1DgmC0YsGis8x");
     }
 
     @Test
