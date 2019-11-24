@@ -5,4 +5,4 @@ jasypt:
       prefix: "ENC@["
       suffix: "]"
 secret2:
-  property: ENC@[nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+]
+  property: ENC@[IPrhI5r+NjLceWC5r1J+YjJeOYkSInbDmfnUQ+h6OgqOoIGRq37nh1/HwPoloGwW]

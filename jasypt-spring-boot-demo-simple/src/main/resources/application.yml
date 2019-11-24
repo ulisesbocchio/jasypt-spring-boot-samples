@@ -3,7 +3,7 @@ jasypt:
         password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 
 user2: uli
-defaultPassword2: ENC(nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+)
+defaultPassword2: ENC(DbG1GppXOsFa2G69PnmADvQFI3esceEhJYbaEIKCcEO5C85JEqGAhfcjFMGnoRFf)
 # works with @EnableEncryptableProperties and StandardEncryptableEnvironment
 endpoint2: https://${user2}:${defaultPassword2}@localhost:30000
 
