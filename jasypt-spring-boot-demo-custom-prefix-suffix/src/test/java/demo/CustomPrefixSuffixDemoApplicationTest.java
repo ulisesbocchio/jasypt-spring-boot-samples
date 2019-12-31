@@ -1,7 +1,7 @@
 package demo;
 
 import com.ulisesbocchio.jasyptspringboot.detector.DefaultPropertyDetector;
-import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +31,7 @@ public class CustomPrefixSuffixDemoApplicationTest {
 					public void setEnvironment(ConfigurableEnvironment environment) {
 						String password = System.getProperty("jasypt.encryptor.password");
 						org.springframework.util.Assert.notNull(password, "Encryption password must be provided!");
-						super.setEnvironment(new EncryptableEnvironment(environment, new DefaultPropertyDetector("ENC@[", "]")));
+						super.setEnvironment(StandardEncryptableEnvironment.builder().detector(new DefaultPropertyDetector("ENC@[", "]")).build());
 					}
 
 				};

@@ -2,7 +2,7 @@ package demo;
 
 
 import com.ulisesbocchio.jasyptspringboot.detector.DefaultPropertyDetector;
-import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.StandardEnvironment;
 
 /**
  * Sample Boot application that showcases easy integration of Jasypt encryption by
@@ -39,7 +38,7 @@ public class CustomPrefixSuffixDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                .environment(new EncryptableEnvironment(new StandardEnvironment(), new DefaultPropertyDetector("ENC@[", "]")))
+                .environment(StandardEncryptableEnvironment.builder().detector(new DefaultPropertyDetector("ENC@[", "]")).build())
                 .sources(CustomPrefixSuffixDemoApplication.class).run(args);
     }
 

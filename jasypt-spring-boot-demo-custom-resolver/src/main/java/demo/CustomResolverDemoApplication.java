@@ -43,7 +43,10 @@ public class CustomResolverDemoApplication implements CommandLineRunner {
         String password = System.getProperty("jasypt.encryptor.password");
         Assert.notNull(password, "Encryption password must be provided!");
         new SpringApplicationBuilder()
-                .environment(new StandardEncryptableEnvironment(new MyEncryptablePropertyResolver(password.toCharArray())))
+                .environment(StandardEncryptableEnvironment
+                        .builder()
+                        .resolver(new MyEncryptablePropertyResolver(password.toCharArray()))
+                        .build())
                 .sources(CustomResolverDemoApplication.class).build(args).run();
     }
 

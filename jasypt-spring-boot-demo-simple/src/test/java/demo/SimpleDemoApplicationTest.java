@@ -1,15 +1,17 @@
 package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import com.ulisesbocchio.jasyptspringboot.environment.EncryptableEnvironment;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.env.RandomValuePropertySource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.Objects;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SimpleDemoApplication.class)
@@ -51,17 +53,14 @@ public class SimpleDemoApplicationTest {
 	}
 
     @Test
-    public void testIndirectProperties() {
-        EncryptableEnvironment encryptableEnvironment = new EncryptableEnvironment(environment, resolver);
-        Assert.assertEquals("chupacabras", encryptableEnvironment.getProperty("indirect.secret.property"));
-        Assert.assertEquals("chupacabras", encryptableEnvironment.getProperty("indirect.secret.property2"));
-        Assert.assertEquals("https://uli:chupacabras@localhost:30000", encryptableEnvironment.getProperty("endpoint"));
-    }
-
-    @Test
     public void testServiceProperties() {
         Assert.assertEquals("chupacabras", service.getSecret());
         Assert.assertEquals("chupacabras", service.getSecret2());
+    }
+
+    @Test
+    public void testSkipRandomPropertySource() {
+        Assert.assertEquals(Objects.requireNonNull(environment.getPropertySources().get("random")).getClass(), RandomValuePropertySource.class);
     }
 
 }
