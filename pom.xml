@@ -16,7 +16,7 @@
         <spring.cloud.version>Greenwich.SR3</spring.cloud.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>3.0.1</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>3.0.2</jasypt.spring.boot.version>
         <system.rules.version>1.19.0</system.rules.version>
     </properties>
 
@@ -109,10 +109,14 @@
                         <mainClass>${start-class}</mainClass>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>com.github.ulisesbocchio</groupId>
+                    <artifactId>jasypt-maven-plugin</artifactId>
+                    <version>${jasypt.spring.boot.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -142,6 +146,11 @@
             <dependency>
                 <groupId>com.github.ulisesbocchio</groupId>
                 <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-maven-plugin</artifactId>
                 <version>${jasypt.spring.boot.version}</version>
             </dependency>
             <dependency>
