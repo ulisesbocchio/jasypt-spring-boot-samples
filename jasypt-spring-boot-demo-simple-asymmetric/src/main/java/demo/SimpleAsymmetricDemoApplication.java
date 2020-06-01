@@ -56,6 +56,9 @@ public class SimpleAsymmetricDemoApplication implements CommandLineRunner {
 //                "lfq/EHpL0Wmn59SHvNwtHU2qx3Ne6M0nQtneCCfR78OcnqQ7+L+3YCMqYGJHNFSa\n" +
 //                "rd+dewfKoPnWw0WyGFEWCg==\n" +
 //                "-----END PRIVATE KEY-----");
+//    OR
+//        make sure your WORKING_DIR is the root of your project
+//        System.setProperty("jasypt.encryptor.private-key-location", "file:src/main/resources/privatekey.pem");
 //    }
 
     @Autowired

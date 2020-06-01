@@ -32,3 +32,8 @@ The starter jar has a `spring.factories` definition that Spring Boot uses to boo
  
  **This is not required in most scenarios**
  
+ ## Test jasypt-maven-plugin encryption
+ ```bash
+mvn jasypt:encrypt-value -Dspring.config.location="file:src/main/resources/application.yml" -Djasypt.encryptor.public-key-format="PEM" -Djasypt.encryptor.public-key-location="file:src/main/resources/publickey.pem" -Djasypt.plugin.value="theValueYouWantToEncrypt"
+ ```
+ 

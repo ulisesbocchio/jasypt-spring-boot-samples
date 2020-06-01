@@ -24,7 +24,7 @@ public class SimpleAsymmetricDemoApplicationCamelTest {
 	MyService service;
 
 	static {
-		System.setProperty("jasypt.encryptor.privateKeyString", "-----BEGIN PRIVATE KEY-----\n" +
+		System.setProperty("jasypt.encryptor.private-key-string", "-----BEGIN PRIVATE KEY-----\n" +
 				"MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtB/IYK8E52CYM\n" +
 				"ZTpyIY9U0HqMewyKnRvSo6s+9VNIn/HSh9+MoBGiADa2MaPKvetS3CD3CgwGq/+L\n" +
 				"IQ1HQYGchRrSORizOcIp7KBx+Wc1riatV/tcpcuFLC1j6QJ7d2I+T7RA98Sx8X39\n" +
