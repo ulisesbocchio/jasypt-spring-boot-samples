@@ -1,14 +1,11 @@
 package demo;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SimpleStarterDemoApplication.class)
 public class SimpleStarterDemoApplicationTest {
 
@@ -24,14 +21,14 @@ public class SimpleStarterDemoApplicationTest {
 
 	@Test
 	public void testEnvironmentProperties() {
-		Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
-		Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
+		Assertions.assertEquals("chupacabras", environment.getProperty("secret.property"));
+		Assertions.assertEquals("chupacabras", environment.getProperty("secret2.property"));
 	}
 
 	@Test
 	public void testServiceProperties() {
-		Assert.assertEquals("chupacabras", service.getSecret());
-		Assert.assertEquals("chupacabras", service.getSecret2());
+		Assertions.assertEquals("chupacabras", service.getSecret());
+		Assertions.assertEquals("chupacabras", service.getSecret2());
 	}
 
 }

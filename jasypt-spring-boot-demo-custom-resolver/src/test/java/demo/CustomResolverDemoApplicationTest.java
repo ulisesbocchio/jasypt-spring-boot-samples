@@ -1,23 +1,22 @@
 package demo;
 
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.test.context.BootstrapWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextLoader;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CustomResolverDemoApplication.class)
 @BootstrapWith(CustomResolverDemoApplicationTest.EncryptableEnvironmentBootstrapper.class)
+@SpringBootTest
 public class CustomResolverDemoApplicationTest {
 
 	@Configuration
@@ -57,14 +56,14 @@ public class CustomResolverDemoApplicationTest {
 
 	@Test
 	public void testEnvironmentProperties() {
-		Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
-		Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
+		assertEquals("chupacabras", environment.getProperty("secret.property"));
+		assertEquals("chupacabras", environment.getProperty("secret2.property"));
 	}
 
 	@Test
 	public void testServiceProperties() {
-		Assert.assertEquals("chupacabras", service.getSecret());
-		Assert.assertEquals("chupacabras", service.getSecret2());
+		assertEquals("chupacabras", service.getSecret());
+		assertEquals("chupacabras", service.getSecret2());
 	}
 
 }

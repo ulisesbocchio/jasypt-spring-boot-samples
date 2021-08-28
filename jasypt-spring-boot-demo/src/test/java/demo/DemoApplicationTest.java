@@ -1,15 +1,13 @@
 package demo;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.assertEquals;
-
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
 public class DemoApplicationTest {
 
@@ -25,12 +23,14 @@ public class DemoApplicationTest {
 	@Autowired
     SimpleBean simpleBean;
 
-	static {
+	@BeforeAll
+	public static void before() {
 		System.setProperty("jasypt.encryptor.password", "password");
 	}
 
 	@Test
 	public void testEnvironmentProperties() {
+		System.out.println(environment);
 		assertEquals("chupacabras", environment.getProperty("secret.property"));
 		assertEquals("chupacabras", environment.getProperty("secret2.property"));
 		assertEquals("chupacabras", environment.getProperty("secret3.property"));

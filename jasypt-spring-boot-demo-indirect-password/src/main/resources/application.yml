@@ -1,0 +1,10 @@
+jasypt:
+    encryptor:
+#        password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+        skip-property-sources: org.springframework.boot.env.RandomValuePropertySource
+
+user2: uli
+defaultPassword2: ENC(DbG1GppXOsFa2G69PnmADvQFI3esceEhJYbaEIKCcEO5C85JEqGAhfcjFMGnoRFf)
+# works with @EnableEncryptableProperties and StandardEncryptableEnvironment
+endpoint2: https://${user2}:${defaultPassword2}@localhost:30000
+

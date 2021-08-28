@@ -16,25 +16,47 @@
 
 package sample.tomcat;
 
+import com.ulisesbocchio.jasyptspringboot.InterceptionMode;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 
+import com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableServletEnvironment;
+import org.jasypt.encryption.StringEncryptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.ConfigurableEnvironment;
 //import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@EnableEncryptableProperties
 public class SampleTomcatSslApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) throws Exception {
-                //System.setProperty("jasypt.encryptor.password", "password");
-		SpringApplication.run(SampleTomcatSslApplication.class, args);
-	}
+    public static void main(String[] args) throws Exception {
+        //System.setProperty("jasypt.encryptor.password", "password");
+        //SpringApplication.run(SampleTomcatSslApplication.class, args);
+        new SpringApplicationBuilder()
+                .environment(
+                        StandardEncryptableServletEnvironment
+                                .builder()
+                                .build()
+                )
+                .sources(SampleTomcatSslApplication.class)
+                .run(args);
+    }
 
-  @Override
-  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-    return builder.sources(SampleTomcatSslApplication.class);
-  }
+    @Bean
+    public StringEncryptor myStringEncryptor(ConfigurableEnvironment env) {
+        return new DefaultLazyEncryptor(env);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder
+                .environment(StandardEncryptableServletEnvironment
+                        .builder()
+                        .build())
+                .sources(SampleTomcatSslApplication.class);
+    }
 }

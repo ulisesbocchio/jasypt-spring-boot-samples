@@ -1,15 +1,13 @@
 package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest(classes = CustomEncryptorDemoApplication.class)
 public class CustomEncryptorDemoApplicationTest {
 
@@ -25,6 +23,6 @@ public class CustomEncryptorDemoApplicationTest {
 
 	@Test
 	public void testEnvironmentProperties() {
-		Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
+		assertEquals("chupacabras", environment.getProperty("secret.property"));
 	}
 }

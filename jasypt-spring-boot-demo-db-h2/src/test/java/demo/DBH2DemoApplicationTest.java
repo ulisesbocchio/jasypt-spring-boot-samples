@@ -2,17 +2,13 @@ package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DBH2DemoApplication.class)
 public class DBH2DemoApplicationTest {
 
@@ -31,7 +27,7 @@ public class DBH2DemoApplicationTest {
 
     @Test
     public void testDbPassword() {
-        Assert.assertEquals("chupacabras", environment.getProperty("spring.datasource.password"));
+        org.junit.jupiter.api.Assertions.assertEquals("chupacabras", environment.getProperty("spring.datasource.password"));
     }
 
     @Test
