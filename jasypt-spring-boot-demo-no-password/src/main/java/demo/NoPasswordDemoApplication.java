@@ -2,6 +2,7 @@ package demo;
 
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class NoPasswordDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                //.environment(new StandardEncryptableEnvironment())
+                .environment(new StandardEncryptableEnvironment())
                 .sources(NoPasswordDemoApplication.class)
                 .run(args);
     }
@@ -48,6 +49,7 @@ public class NoPasswordDemoApplication implements CommandLineRunner {
         LOG.info("**********************************************************");
         LOG.info("**********************************************************");
         LOG.info("User: {}", appCtx.getEnvironment().getProperty("username"));
+        LOG.info("Test User: {}", appCtx.getEnvironment().getProperty("test.user"));
         LOG.info("**********************************************************");
         LOG.info("**********************************************************");
         LOG.info("Done!");

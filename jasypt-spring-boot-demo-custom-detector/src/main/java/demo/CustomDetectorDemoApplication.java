@@ -1,7 +1,6 @@
 package demo;
 
 
-import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyDetector;
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 
@@ -43,10 +41,10 @@ public class CustomDetectorDemoApplication implements CommandLineRunner {
                 .sources(CustomDetectorDemoApplication.class).run(args);
     }
 
-    @Bean(name = "encryptablePropertyDetector")
-    public EncryptablePropertyDetector encryptablePropertyDetector() {
-        return new MyEncryptablePropertyDetector();
-    }
+//    @Bean(name = "encryptablePropertyDetector")
+//    public EncryptablePropertyDetector encryptablePropertyDetector() {
+//        return new MyEncryptablePropertyDetector();
+//    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -59,18 +57,4 @@ public class CustomDetectorDemoApplication implements CommandLineRunner {
         LOG.info("Done!");
     }
 
-    private static class MyEncryptablePropertyDetector implements EncryptablePropertyDetector {
-        @Override
-        public boolean isEncrypted(String value) {
-            if (value != null) {
-                return value.startsWith("ENC@");
-            }
-            return false;
-        }
-
-        @Override
-        public String unwrapEncryptedValue(String value) {
-            return value.substring("ENC@".length());
-        }
-    }
 }

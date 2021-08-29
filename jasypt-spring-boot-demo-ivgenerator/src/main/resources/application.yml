@@ -2,6 +2,8 @@ jasypt:
   encryptor:
     algorithm: PBEWITHHMACSHA512ANDAES_256
     ivGeneratorClassname: org.jasypt.iv.RandomIvGenerator
+    refreshed-event-classes:
+      - org.springframework.boot.context.event.ApplicationStartedEvent
 
 secret2:
   property: ENC(VsW0IMmYs2hbQJMVcpxp8eZxFyvuAg4wRQaIwv5sT4hL0SuwVq38SlSLPz8SEORy)

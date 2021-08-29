@@ -16,35 +16,54 @@
 
 package sample.tomcat;
 
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableServletEnvironment;
 import lombok.SneakyThrows;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-//import org.springframework.boot.context.embedded.LocalServerPort;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.BootstrapWith;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.client.RestTemplate;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(loader = SampleTomcatSslApplicationTest.EncryptableEnvironmentContextLoader.class)
 @SpringBootTest(classes = SampleTomcatSslApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SampleTomcatSslApplicationTest {
+
+    public static class EncryptableEnvironmentContextLoader extends SpringBootContextLoader {
+        @Override
+        protected SpringApplication getSpringApplication() {
+            return new SpringApplication() {
+
+                @Override
+                public void setEnvironment(ConfigurableEnvironment environment) {
+                    String password = environment.getRequiredProperty("jasypt.encryptor.password");
+                    super.setEnvironment(StandardEncryptableServletEnvironment.builder().build());
+                }
+
+            };
+        }
+    }
 
     @LocalServerPort
     int port;
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         System.setProperty("jasypt.encryptor.password", "password");
     }

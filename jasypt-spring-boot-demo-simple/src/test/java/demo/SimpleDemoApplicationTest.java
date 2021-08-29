@@ -2,18 +2,15 @@ package demo;
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import org.jasypt.encryption.StringEncryptor;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.env.RandomValuePropertySource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Objects;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SimpleDemoApplication.class)
 public class SimpleDemoApplicationTest {
 
@@ -36,31 +33,31 @@ public class SimpleDemoApplicationTest {
 
     @Test
     public void testStringEncryptorIsPresent() {
-        Assert.assertNotNull("StringEncryptor should be present", encryptor);
+        Assertions.assertNotNull(encryptor, "StringEncryptor should be present");
     }
 
     @Test
     public void testEnvironmentProperties() {
-        Assert.assertEquals("chupacabras", environment.getProperty("secret.property"));
-        Assert.assertEquals("chupacabras", environment.getProperty("secret2.property"));
+        Assertions.assertEquals("chupacabras", environment.getProperty("secret.property"));
+        Assertions.assertEquals("chupacabras", environment.getProperty("secret2.property"));
     }
 
 	@Test
 	public void testIndirectPropertiesDirectly() {
-		Assert.assertEquals("chupacabras", environment.getProperty("indirect.secret.property"));
-		Assert.assertEquals("chupacabras", environment.getProperty("indirect.secret.property2"));
-		Assert.assertEquals("https://uli:chupacabras@localhost:30000", environment.getProperty("endpoint"));
+		Assertions.assertEquals("chupacabras", environment.getProperty("indirect.secret.property"));
+		Assertions.assertEquals("chupacabras", environment.getProperty("indirect.secret.property2"));
+		Assertions.assertEquals("https://uli:chupacabras@localhost:30000", environment.getProperty("endpoint"));
 	}
 
     @Test
     public void testServiceProperties() {
-        Assert.assertEquals("chupacabras", service.getSecret());
-        Assert.assertEquals("chupacabras", service.getSecret2());
+        Assertions.assertEquals("chupacabras", service.getSecret());
+        Assertions.assertEquals("chupacabras", service.getSecret2());
     }
 
     @Test
     public void testSkipRandomPropertySource() {
-        Assert.assertEquals(Objects.requireNonNull(environment.getPropertySources().get("random")).getClass(), RandomValuePropertySource.class);
+        Assertions.assertEquals(Objects.requireNonNull(environment.getPropertySources().get("random")).getClass(), RandomValuePropertySource.class);
     }
 
 }

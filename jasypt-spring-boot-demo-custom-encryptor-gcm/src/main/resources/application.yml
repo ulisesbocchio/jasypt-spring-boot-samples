@@ -1,0 +1,41 @@
+secret:
+    property: ENC(1HEITl3/p/xc8cs5K8ifu7KloVZLE2502IDrvxnfSKsyCO3fvRFCKED3GfU2OiL6xtx11bA7WWxLnUCxxC+bDbCp)
+
+---
+spring:
+    config:
+        activate:
+            on-profile: location
+jasypt:
+    encryptor:
+        gcm-secret-key-location: classpath:secret_key.b64
+---
+spring:
+    config:
+        activate:
+            on-profile: inline
+jasypt:
+    encryptor:
+        gcm-secret-key-string: "U75WqcG7E9I1OABD++LRsbI1djqmm2m/s8D91PoQXXI="
+---
+spring:
+    config:
+        activate:
+            on-profile: password
+jasypt:
+    encryptor:
+        gcm-secret-key-password: sumbudrule
+        gcm-secret-key-salt: "IctRxdSQc1jlT5ij8dlZ7A=="
+secret:
+    property: ENC(EgsWQkRAU6cHM2s+2tkHo1ZLV4hjOJ7EQQzvT8qjtKPFJOuDluvIdD0eyW+PFM3xcwizFuLCuKlj6nCRIgAsOfuh)
+
+---
+spring:
+    config:
+        activate:
+            on-profile: nosalt
+jasypt:
+    encryptor:
+        gcm-secret-key-password: sumbudrule
+secret:
+    property: ENC(VSnGHHUXqHitpliE28VwCG7IPspV3qNzmh2jf/2tu3Nf1lParI2k0U15SFXqSzIkTxpfQGrbR1Si8CDhaZSjLrsN)

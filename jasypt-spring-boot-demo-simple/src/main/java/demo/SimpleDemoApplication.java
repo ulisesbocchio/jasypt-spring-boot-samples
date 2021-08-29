@@ -25,10 +25,10 @@ import org.springframework.core.env.Environment;
  * @author Ulises Bocchio
  */
 @SpringBootApplication
-@ComponentScan(excludeFilters = @ComponentScan.Filter( type = FilterType.ASSIGNABLE_TYPE, value = CustomEnvironmentSimpleDemoApplication.class))
+@ComponentScan(excludeFilters = @ComponentScan.Filter( type = FilterType.REGEX, pattern = ".*"))
 @EncryptablePropertySources({@EncryptablePropertySource("classpath:encrypted.properties"),
                              @EncryptablePropertySource(name = "IgnoredResource_FileDoesNotExist", value = "classpath:does_not_exists.properties", ignoreResourceNotFound = true)})
-@Import(TestConfig.class)
+@Import({MyService.class, TestConfig.class})
 @EnableEncryptableProperties
 public class SimpleDemoApplication implements CommandLineRunner {
 

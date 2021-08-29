@@ -42,7 +42,7 @@ public class SimplePBEWITHHMACSHA512ANDAES_256DemoApplication implements Command
     @Bean("encryptorBean")
     StringEncryptor encryptorBean(Environment environment) {
         SimplePBEByteEncryptor encryptor = new SimplePBEByteEncryptor();
-        encryptor.setPassword(environment.getProperty("jasypt.encryptor.password"));
+        encryptor.setPassword(environment.getRequiredProperty("jasypt.encryptor.password"));
         encryptor.setSaltGenerator(new RandomSaltGenerator());
         encryptor.setIterations(1000);
         encryptor.setAlgorithm("PBEWITHHMACSHA512ANDAES_256");

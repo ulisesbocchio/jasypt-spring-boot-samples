@@ -1,6 +1,9 @@
 package demo;
 
 
+import com.ulisesbocchio.jasyptspringboot.InterceptionMode;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+import com.ulisesbocchio.jasyptspringboot.annotation.EncryptablePropertySource;
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +24,13 @@ import org.springframework.core.env.Environment;
  * @author Ulises Bocchio
  */
 @SpringBootApplication
-@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = SimpleDemoApplication.class))
+@ComponentScan(excludeFilters = @ComponentScan.Filter( type = FilterType.REGEX, pattern = ".*"))
 @PropertySources({@PropertySource("classpath:encrypted.properties"),
         @PropertySource(name = "IgnoredResource_FileDoesNotExist", value = "classpath:does_not_exists.properties", ignoreResourceNotFound = true)})
-@Import(TestConfig.class)
+//@Import(TestConfig.class)
+@PropertySource(name = "encrypted2", value = "classpath:encrypted2.properties")
+@Import(MyService.class)
+//@EnableEncryptableProperties
 public class CustomEnvironmentSimpleDemoApplication implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomEnvironmentSimpleDemoApplication.class);
@@ -36,11 +42,15 @@ public class CustomEnvironmentSimpleDemoApplication implements CommandLineRunner
         //try commenting the following line out and run the app from the command line passing the password as
         //a command line argument: java -jar target/jasypt-spring-boot-demo-0.0.1-SNAPSHOT.jar --jasypt.encryptor.password=password
         //System.setProperty("jasypt.encryptor.password", "password");
-        System.setProperty("ENCRYPTED_PASSWORD", "nrmZtkF7T0kjG/VodDvBw93Ct8EgjCA+");
+        System.setProperty("ENCRYPTED_PASSWORD", "9ah+QnEdccHCkARkGZ7f0v5BLXXC+z0mr4hyjgE8T2G7mF75OBU1DgmC0YsGis8x");
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                .environment(new StandardEncryptableEnvironment())
+                .environment(
+                        StandardEncryptableEnvironment
+                            .builder()
+                            .build()
+                )
                 .sources(CustomEnvironmentSimpleDemoApplication.class)
                 .run(args);
     }

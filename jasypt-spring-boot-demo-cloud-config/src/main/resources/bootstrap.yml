@@ -6,9 +6,11 @@ spring:
       enabled: false
 ---
 spring:
-  profiles: compose
   cloud:
     config:
       enabled: true
       uri: http://${secret-domain}:8888
+  config:
+    activate:
+      on-profile: compose
 secret-domain: ENC(Xgga6wfHFbxIMXg9PPGQxBUnp2Aabp3rx2t4uzLP7RKQOdMcdQGpatfukpuj8a6B)
