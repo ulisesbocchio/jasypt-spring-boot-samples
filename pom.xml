@@ -16,7 +16,7 @@
         <spring.cloud.version>2020.0.3</spring.cloud.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <start-class>Application</start-class>
-        <jasypt.spring.boot.version>3.0.4-SNAPSHOT</jasypt.spring.boot.version>
+        <jasypt.spring.boot.version>3.0.4</jasypt.spring.boot.version>
         <system.rules.version>1.19.0</system.rules.version>
     </properties>
 
