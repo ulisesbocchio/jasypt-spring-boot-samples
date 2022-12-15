@@ -55,8 +55,7 @@ public class DBH2DemoApplication implements CommandLineRunner {
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
                 //.environment(new StandardEncryptableEnvironment())
-                .sources(DBH2DemoApplication.class)
-                .run(args);
+                .sources(DBH2DemoApplication.class).run(args);
     }
 
     @Bean
@@ -94,12 +93,13 @@ public class DBH2DemoApplication implements CommandLineRunner {
         stmt.execute("CREATE USER IF NOT EXISTS ULI PASSWORD 'chupacabras'");
         stmt.execute("GRANT ALL ON person to ULI");
     }
+
     @Override
     @SneakyThrows
     public void run(String... args) {
         // uncomment the following, remove src/main/java/resources/testdb.mv.db and src/testjava/resources/testdb.mv.db, and run application to re-create db
-        // populateDb();
-        // createUserWithPassword();
+//         populateDb();
+//         createUserWithPassword();
         // then copy target/classes/testdb.mv.db to src/main/java/resources/testdb.mv.db and src/test/java/resources/testdb.mv.db and do a mvn clea
         LOG.info("**********************************************************");
         LOG.info("**********************************************************");

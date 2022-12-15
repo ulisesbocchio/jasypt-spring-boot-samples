@@ -55,7 +55,9 @@ public class CloudConfigDemoApplicationTest {
         environment.getPropertySources().addLast(eps);
         Assertions.assertEquals("theValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
         map.put("testPropertyThatWillChange", "ENC(AZWn9RKhE+y3KdgB5NbCLjzHHxPe+PhAPXTd/r4Nm9BQ0NtcEoDS896yNsRPaRZxBPQtww+Vu31G7Mdtr/6UFQ==)");
-        Assertions.assertEquals("theValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
+        // change at the value level now reflects immediately due to new caching strategy
+        // Assertions.assertEquals("theValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
+        // Assertions.assertEquals("theNewValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
         applicationContext.publishEvent(new RefreshScopeRefreshedEvent());
         Assertions.assertEquals("theNewValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
         environment.getPropertySources().remove("refreshtest");
@@ -75,6 +77,24 @@ public class CloudConfigDemoApplicationTest {
         map.put("testPropertyThatWillChange", "ENC(AZWn9RKhE+y3KdgB5NbCLjzHHxPe+PhAPXTd/r4Nm9BQ0NtcEoDS896yNsRPaRZxBPQtww+Vu31G7Mdtr/6UFQ==)");
         Assertions.assertEquals("ENC(AZWn9RKhE+y3KdgB5NbCLjzHHxPe+PhAPXTd/r4Nm9BQ0NtcEoDS896yNsRPaRZxBPQtww+Vu31G7Mdtr/6UFQ==)", environment.getProperty("testPropertyThatWillChange"));
         applicationContext.publishEvent(new EnvironmentChangeEvent(Collections.emptySet()));
+        Assertions.assertEquals("theNewValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
+        environment.getPropertySources().remove("refreshtest");
+        Assertions.assertNull(environment.getProperty("testPropertyThatWillChange"));
+    }
+
+    @Test
+    public void environmentChangedWithScope() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("testPropertyThatWillChange", "ENC(rSbEWcizD0aYexvDcky4yotGdtgRp125B88JDHwTsTIm1VRKsYzcFlEsL9jyqCvNn5kxwfGgOVwsnZDW+w7IFg==)");
+        MapPropertySource ps = new MapPropertySource("refreshtest", map);
+        EncryptablePropertySourceConverter propertyConverter = applicationContext.getBean(EncryptablePropertySourceConverter.class);
+        PropertySource<?> eps = propertyConverter.makeEncryptable(ps);
+        environment.getPropertySources().addLast(eps);
+        Assertions.assertEquals("theValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
+        environment.getPropertySources().replace("refreshtest", ps);
+        map.put("testPropertyThatWillChange", "ENC(AZWn9RKhE+y3KdgB5NbCLjzHHxPe+PhAPXTd/r4Nm9BQ0NtcEoDS896yNsRPaRZxBPQtww+Vu31G7Mdtr/6UFQ==)");
+        Assertions.assertEquals("ENC(AZWn9RKhE+y3KdgB5NbCLjzHHxPe+PhAPXTd/r4Nm9BQ0NtcEoDS896yNsRPaRZxBPQtww+Vu31G7Mdtr/6UFQ==)", environment.getProperty("testPropertyThatWillChange"));
+        applicationContext.publishEvent(new RefreshScopeRefreshedEvent());
         Assertions.assertEquals("theNewValueYouWantToEncrypt", environment.getProperty("testPropertyThatWillChange"));
         environment.getPropertySources().remove("refreshtest");
         Assertions.assertNull(environment.getProperty("testPropertyThatWillChange"));

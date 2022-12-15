@@ -16,19 +16,14 @@
 
 package sample.tomcat;
 
-import com.ulisesbocchio.jasyptspringboot.InterceptionMode;
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
-
 import com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor;
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableServletEnvironment;
 import org.jasypt.encryption.StringEncryptor;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
-//import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class SampleTomcatSslApplication extends SpringBootServletInitializer {

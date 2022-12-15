@@ -14,7 +14,7 @@ public class CustomEncryptorDemoApplicationTest {
 	@Autowired
 	ConfigurableEnvironment environment;
 
-	@Autowired
+	@Autowired(required = false)
 	EncryptablePropertyResolver resolver;
 
 	static {

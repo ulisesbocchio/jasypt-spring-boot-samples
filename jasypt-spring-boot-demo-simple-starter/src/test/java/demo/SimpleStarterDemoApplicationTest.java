@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.core.env.Environment;
+import org.springframework.test.context.BootstrapWith;
 
 @SpringBootTest(classes = SimpleStarterDemoApplication.class)
 public class SimpleStarterDemoApplicationTest {

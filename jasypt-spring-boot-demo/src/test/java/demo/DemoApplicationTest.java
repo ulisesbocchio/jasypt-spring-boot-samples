@@ -2,9 +2,11 @@ package demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 
@@ -22,6 +24,10 @@ public class DemoApplicationTest {
 
 	@Autowired
     SimpleBean simpleBean;
+
+	@Autowired
+	@Qualifier("encryptorBean")
+	StringEncryptor encryptor;
 
 	@BeforeAll
 	public static void before() {
@@ -56,4 +62,12 @@ public class DemoApplicationTest {
         assertEquals("item2", itemConfig.getItems().get(1).getName());
         assertEquals(new Integer(2), itemConfig.getItems().get(1).getValue());
     }
+
+	@Test
+	public void testEncryptDecrypt() {
+		String message = "embedded-client";
+		String encrypted = encryptor.encrypt(message);
+		System.out.println("Encrypted Message: " + encrypted);
+		assertEquals(message, encryptor.decrypt(encrypted));
+	}
 }

@@ -4,45 +4,20 @@ import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnviron
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.BootstrapWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextLoader;
 
-@SpringBootTest(classes = CustomDetectorDemoApplication.class)
-@BootstrapWith(CustomDetectorDemoApplicationTest.EncryptableEnvironmentBootstrapper.class)
-public class CustomDetectorDemoApplicationTest {
-
-	@Configuration
-	static class EncryptableEnvironmentBootstrapper extends SpringBootTestContextBootstrapper {
-		static class EncryptableEnvironmentContextLoader extends SpringBootContextLoader {
-			@Override
-			protected SpringApplication getSpringApplication() {
-				return new SpringApplication() {
-
-					@Override
-					public void setEnvironment(ConfigurableEnvironment environment) {
-						String password = environment.getRequiredProperty("jasypt.encryptor.password");
-						super.setEnvironment(StandardEncryptableEnvironment.builder().detector(new MyEncryptablePropertyDetector()).build());
-					}
-
-				};
-			}
-		}
-
-		@Override
-		protected Class<? extends ContextLoader> getDefaultContextLoaderClass(
-				Class<?> testClass) {
-			return EncryptableEnvironmentContextLoader.class;
-		}
+class EncryptableEnvironmentContextLoader extends SpringBootContextLoader {
+	@Override
+	protected ConfigurableEnvironment getEnvironment() {
+		return StandardEncryptableEnvironment.builder().detector(new MyEncryptablePropertyDetector()).build();
 	}
-
-
+}
+@ContextConfiguration(loader = EncryptableEnvironmentContextLoader.class)
+@SpringBootTest(classes = CustomDetectorDemoApplication.class)
+public class CustomDetectorDemoApplicationTest {
 	@Autowired
 	ConfigurableEnvironment environment;
 

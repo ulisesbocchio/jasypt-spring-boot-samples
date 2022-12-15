@@ -1,0 +1,50 @@
+spring:
+    profiles:
+        active:
+         - composite
+         - dev
+         - asymmetric
+#         - pbe
+    cloud:
+        config:
+            server:
+                prefix: /config
+                composite:
+                    - type: native
+                      search-locations: classpath:config
+                bootstrap: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#https://soshace.com/spring-cloud-config-refresh-strategies/:
+
+---
+spring:
+  application:
+    name: ENC(FQeoVQpFv67mG8fS15hXLyQupLSj6fZY+9kAv9PmpATIyU3TwFGeNq+hFKN4rt/GBQFOgXBSdA1T9Oy1zKgH1yeesB6TNl+0xfNfQW541RcI29QNilBKkaReoxR3/qewlxdcPT+79vOd1lDymU/SL3IfmsURH8lcvv1p25uzQ0rjbzRGpQpBXzLVKWsivhRP00aM4Sa1N1IGOkNZp/C1i3U7hOJ6TAjtYm9R3n2lyIlz7PBc4zJZ5jWOGKigmJ5n2mgTwjX59Bec6+VrEG25GvKt9bBe8z36RvtXGlrH0wIVng5VH8RG658vRWz10P+0Jhfs3KuBmT78nblM6rUjKQ==)
+  config:
+    activate:
+      on-profile: asymmetric
+jasypt:
+  encryptor:
+    privateKeyFormat: PEM
+---
+spring:
+  application:
+    name: ENC(yD78qS4muVYDhV3Ib2ATYzDxeJ6X8mif)
+  config:
+    activate:
+      on-profile: pbe
+jasypt:
+  encryptor:
+    password: password
+    algorithm: PBEWithMD5AndDES
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64

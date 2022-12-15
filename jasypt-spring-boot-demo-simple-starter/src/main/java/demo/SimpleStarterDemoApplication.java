@@ -37,7 +37,7 @@ public class SimpleStarterDemoApplication implements CommandLineRunner {
         //Enable proxy mode for intercepting encrypted properties
         //System.setProperty("jasypt.encryptor.proxyPropertySources", "true");
         new SpringApplicationBuilder()
-                .environment(StandardEncryptableEnvironment.builder().build())
+//                .environment(StandardEncryptableEnvironment.builder().build())
                 .sources(SimpleStarterDemoApplication.class).run(args);
     }
 
