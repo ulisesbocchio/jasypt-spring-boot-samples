@@ -14,7 +14,7 @@
 
 	<properties>
 		<start-class>demo.CustomDetectorDemoApplication</start-class>
-		<java.version>18</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<build>
