@@ -6,14 +6,15 @@
     <artifactId>jasypt-spring-boot-samples-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
-    <description>Jasypt Spring Boot Parent</description>
-    <url>https://github.com/ulisesbocchio/jasypt-spring-boot</url>
+    <description>Jasypt Spring Boot Samples Parent</description>
+    <name>Jasypt Spring Boot Samples Parent</name>
+    <url>https://github.com/ulisesbocchio/jasypt-spring-boot-samples</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring.boot.version>2.7.6</spring.boot.version>
-        <spring.cloud.version>2021.0.5</spring.cloud.version>
+        <spring.boot.version>3.0.0</spring.boot.version>
+        <spring.cloud.version>2022.0.0-RC3</spring.cloud.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <start-class>Application</start-class>
         <jasypt.spring.boot.version>3.0.5</jasypt.spring.boot.version>

@@ -18,11 +18,13 @@ package sample.tomcat;
 
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableServletEnvironment;
 import lombok.SneakyThrows;
-import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.TrustSelfSignedStrategy;
+import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -67,12 +69,11 @@ public class SampleTomcatSslApplicationTest {
 
     @SneakyThrows
     public void customize(RestTemplate restTemplate) {
-        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(
-                new SSLContextBuilder().loadTrustMaterial(null,
-                        new TrustSelfSignedStrategy()).build());
+        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build());
 
-        HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory)
-                .build();
+        PoolingHttpClientConnectionManager cm = PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(socketFactory).build();
+
+        HttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
     }
 }
