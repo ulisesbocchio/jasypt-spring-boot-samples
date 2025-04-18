@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @author Ulises Bocchio, Sergio.U.Bocchio@Disney.com (BOCCS002)
- */
 @Controller
 public class JasyptController {
 
